@@ -1,5 +1,6 @@
 package by.misevich.app.core.convertors.dto;
 
+import by.misevich.common.model.enums.CardType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class ClientDTO extends AbstractDTO{
     private String name;
     private String phone;
     private String email;
-    private String status;
+    private CardType status;
     @JsonIgnore
     private Set<CardDTO> cards;
 }

@@ -4,16 +4,12 @@ import by.misevich.common.model.enums.CardType;
 import by.misevich.common.model.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class CardDTO extends AbstractDTO{
-    private String number;
+@RequiredArgsConstructor
+public class TypeCurrencyCardFilter {
+    private CardType type;
     private CurrencyType currency;
-    private CardType typeCard;
-    private ClientDTO client;
 }
