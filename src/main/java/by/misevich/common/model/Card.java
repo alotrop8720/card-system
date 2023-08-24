@@ -15,9 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 @Table(name = "m_card")
-public class Card {
-    @Id
-    private Long id;
+public class Card extends AbstractEntity{
     private String number;
     private CurrencyType currency;
     private CardType typeCard;
@@ -39,6 +37,6 @@ public class Card {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, number, currency, typeCard);
+        return Objects.hash(number, currency, typeCard);
     }
 }

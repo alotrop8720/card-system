@@ -15,9 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Table(name = "m_client")
-public class Client {
-    @Id
-    private Long id;
+public class Client extends AbstractEntity{
     private String name;
     private String phone;
     private String email;
@@ -39,6 +37,6 @@ public class Client {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, phone, email, status);
+        return Objects.hash(name, phone, email, status);
     }
 }
