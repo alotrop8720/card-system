@@ -1,6 +1,7 @@
 package by.misevich.common.model;
 
 import by.misevich.common.model.enums.CardType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,9 +20,12 @@ public class Client extends AbstractEntity{
     private String name;
     private String phone;
     private String email;
-    private CardType status;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+    @Enumerated(EnumType.STRING)
+    private CardType status = CardType.CLASSIC;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    @JsonBackReference
     private Set<Card> cards = new HashSet<>();
 
     @Override

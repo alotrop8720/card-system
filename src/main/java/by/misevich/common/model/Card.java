@@ -17,8 +17,12 @@ import java.util.Objects;
 @Table(name = "m_card")
 public class Card extends AbstractEntity{
     private String number;
-    private CurrencyType currency;
-    private CardType typeCard;
+
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currency = CurrencyType.BYN;
+
+    @Enumerated(EnumType.STRING)
+    private CardType typeCard = CardType.CLASSIC;
 
     @ManyToOne
     @JsonManagedReference
