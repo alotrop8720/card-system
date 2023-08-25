@@ -1,4 +1,4 @@
-package by.misevich.app.core.convertors.dto;
+package by.misevich.app.core.dto;
 
 import by.misevich.common.model.enums.CardType;
 import by.misevich.common.model.enums.CurrencyType;

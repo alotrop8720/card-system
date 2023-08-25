@@ -42,7 +42,7 @@ public class ApplicationBeans {
         parameters.add(parameterBuilder.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("by.misevich.app.core.controller"))
                 .paths(PathSelectors.any())
                 .build().pathMapping("")
                 .globalOperationParameters(parameters);

@@ -1,7 +1,7 @@
 package by.misevich.app.core.convertors.mappers;
 
 import by.misevich.app.core.convertors.AbstractMapper;
-import by.misevich.app.core.convertors.dto.ClientDTO;
+import by.misevich.app.core.dto.ClientDTO;
 import by.misevich.common.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

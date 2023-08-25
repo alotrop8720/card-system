@@ -1,6 +1,6 @@
 package by.misevich.app.core.filter;
 
-import by.misevich.app.core.convertors.dto.ClientDTO;
+import by.misevich.app.core.dto.ClientDTO;
 import by.misevich.app.core.filter.base.Filter;
 import by.misevich.common.model.Client;
 import lombok.Getter;

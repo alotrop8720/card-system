@@ -1,6 +1,6 @@
 package by.misevich.app.core.services;
 
-import by.misevich.app.core.convertors.dto.ClientDTO;
+import by.misevich.app.core.dto.ClientDTO;
 import by.misevich.app.core.convertors.mappers.ClientMapper;
 import by.misevich.app.core.filter.ClientFilter;
 import by.misevich.common.model.Client;
@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 
@@ -27,6 +28,8 @@ class ClientServiceTest {
     private ClientRepository clientRepository;
     @Mock
     private ClientMapper clientMapper;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     private final static Integer TIME_TO_CALL = 1;
 

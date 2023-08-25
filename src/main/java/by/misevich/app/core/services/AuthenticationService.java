@@ -1,7 +1,7 @@
 package by.misevich.app.core.services;
 
-import by.misevich.app.core.convertors.dto.AuthRequestDTO;
-import by.misevich.app.core.convertors.dto.AuthResponseDTO;
+import by.misevich.app.core.dto.AuthRequestDTO;
+import by.misevich.app.core.dto.AuthResponseDTO;
 import by.misevich.app.core.security.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,8 @@
 package by.misevich.app.core.services;
 
-import by.misevich.app.core.convertors.dto.CardDTO;
-import by.misevich.app.core.convertors.dto.ClientDTO;
-import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilterDTO;
+import by.misevich.app.core.dto.CardDTO;
+import by.misevich.app.core.dto.ClientDTO;
+import by.misevich.app.core.dto.TypeCurrencyCardFilterDTO;
 import by.misevich.app.core.convertors.mappers.CardMapper;
 import by.misevich.common.model.Card;
 import by.misevich.common.model.Client;

@@ -8,6 +8,6 @@ import static java.lang.String.format;
 public class InvalidLoginException extends ResponseStatusException {
 
     public InvalidLoginException(String username) {
-        super(HttpStatus.BAD_REQUEST, format("Username is already use; username = '%s'", username));
+        super(HttpStatus.NOT_ACCEPTABLE, format("Username is already use; username = '%s'", username));
     }
 }

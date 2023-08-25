@@ -1,4 +1,4 @@
-package by.misevich.app.core.convertors.dto;
+package by.misevich.app.core.dto;
 
 import lombok.*;
 

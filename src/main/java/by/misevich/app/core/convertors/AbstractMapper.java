@@ -1,6 +1,6 @@
 package by.misevich.app.core.convertors;
 
-import by.misevich.app.core.convertors.dto.AbstractDTO;
+import by.misevich.app.core.dto.AbstractDTO;
 import by.misevich.common.model.AbstractEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package by.misevich.app.core.services;
 
-import by.misevich.app.core.convertors.dto.ClientDTO;
+import by.misevich.app.core.dto.ClientDTO;
 import by.misevich.app.core.convertors.mappers.ClientMapper;
 import by.misevich.app.core.error.InvalidLoginException;
 import by.misevich.app.core.filter.ClientFilter;

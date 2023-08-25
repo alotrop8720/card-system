@@ -1,8 +1,8 @@
 package by.misevich.app.core.services;
 
-import by.misevich.app.core.convertors.dto.CardDTO;
-import by.misevich.app.core.convertors.dto.ClientDTO;
-import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilterDTO;
+import by.misevich.app.core.dto.CardDTO;
+import by.misevich.app.core.dto.ClientDTO;
+import by.misevich.app.core.dto.TypeCurrencyCardFilterDTO;
 import by.misevich.app.core.convertors.mappers.CardMapper;
 import by.misevich.common.model.Card;
 import by.misevich.common.model.Client;
@@ -47,7 +47,7 @@ public class CardService {
         final Optional<Client> clientById = clientRepository.findById(clientId);
         if (clientById.isEmpty()){
             log.error(String.format("Client with id = [%s] not found", clientId));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         final Client client = clientById.get();
         client.setStatus(newCard.getTypeCard().name());
