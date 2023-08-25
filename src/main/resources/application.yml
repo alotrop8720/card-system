@@ -20,3 +20,7 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
+
+jwt:
+  secret: secret
+  expiration: 6000000

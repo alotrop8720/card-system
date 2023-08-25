@@ -20,7 +20,7 @@ public class ClientController {
 
 
     @PostMapping()
-    public ResponseEntity<ClientDTO> createEmployer(@RequestBody ClientDTO newClient){
+    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO newClient){
         return clientService.createClient(newClient);
     }
 

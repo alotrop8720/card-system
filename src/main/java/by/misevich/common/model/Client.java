@@ -20,6 +20,8 @@ public class Client extends AbstractEntity{
     private String phone;
     private String email;
     private String status;
+    private String username;
+    private String securePassword;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @JsonBackReference

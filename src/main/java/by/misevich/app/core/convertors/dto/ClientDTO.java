@@ -15,6 +15,8 @@ public class ClientDTO extends AbstractDTO{
     private String phone;
     private String email;
     private String status;
+    private String username;
+    private String securePassword;
     @JsonIgnore
     private Set<CardDTO> cards;
 }

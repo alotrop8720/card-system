@@ -20,7 +20,7 @@ public class CardController {
     private final CardService cardService;
 
     @PostMapping()
-    public ResponseEntity<CardDTO> createEmployer(@RequestBody CardDTO newCard){
+    public ResponseEntity<CardDTO> createCard(@RequestBody CardDTO newCard){
         return cardService.createCard(newCard);
     }
 

@@ -1,12 +1,14 @@
 create table m_client
 (
-    id     bigserial not null
+    id              bigserial not null
         constraint m_client_pk
             primary key,
-    full_name   varchar   not null,
-    phone  varchar,
-    email  varchar,
-    status varchar
+    full_name       varchar   not null,
+    phone           varchar,
+    email           varchar,
+    status          varchar,
+    username        varchar,
+    secure_password varchar
 );
 
 alter table m_client
