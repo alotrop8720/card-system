@@ -4,7 +4,8 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class AbstractDTO implements Serializable {
