@@ -4,13 +4,13 @@ import by.misevich.app.core.convertors.dto.ClientDTO;
 import by.misevich.app.core.filter.ClientFilter;
 import by.misevich.app.core.services.ClientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
@@ -24,9 +24,9 @@ public class ClientController {
         return clientService.createClient(newClient);
     }
 
-    @PostMapping("/filter")
-    public ResponseEntity<Page<ClientDTO>> filterByContain(@RequestBody ClientFilter filter, Pageable pageable){
-        return clientService.filterByContain(filter, pageable);
+    @PostMapping("/search/by-contain")
+    public ResponseEntity<List<ClientDTO>> findByContainClient(@RequestBody ClientFilter filter){
+        return clientService.findByContainClient(filter);
     }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 @UtilityClass
 public class CommonSpecifications {
-    public static Specification start(String attr, String value) {
+    public static <T> Specification<T> start(String attr, String value) {
         if (StringUtils.isEmpty(value)) {
             return null;
         }

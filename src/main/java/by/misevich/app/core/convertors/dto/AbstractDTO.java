@@ -8,6 +8,6 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class AbstractDTO implements Serializable {
+public abstract class AbstractDTO implements Serializable {
     private Long id;
 }

@@ -17,7 +17,7 @@
 
     <properties>
         <swagger.version>3.0.0</swagger.version>
-        <model.version>2.3.5</model.version>
+        <model.version>3.0.0</model.version>
     </properties>
 
     <dependencies>

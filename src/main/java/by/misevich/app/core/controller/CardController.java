@@ -24,8 +24,8 @@ public class CardController {
         return cardService.createCard(newCard);
     }
 
-    @PostMapping("/filter")
-    public ResponseEntity<Page<String>> createEmployer(@RequestBody TypeCurrencyCardFilter filter, Pageable pageable){
-        return cardService.typeCurrencyCardFilter(filter, pageable);
+    @PostMapping("/search/by-type-currency")
+    public ResponseEntity<Page<String>> findByTypeCurrencyCard(@RequestBody TypeCurrencyCardFilter filter, Pageable pageable){
+        return cardService.findByTypeCurrencyCard(filter, pageable);
     }
 }

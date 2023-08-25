@@ -7,12 +7,10 @@ import by.misevich.common.model.Client;
 import by.misevich.common.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,22 +22,22 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
+    @Transactional
     public ResponseEntity<ClientDTO> createClient(ClientDTO newClient){
         Client client = clientMapper.toEntity(newClient);
         if (client == null){
             log.info("Parser error");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         final Client save = clientRepository.save(client);
         final ClientDTO result = clientMapper.toDto(save);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
-    public ResponseEntity<Page<ClientDTO>> filterByContain(ClientFilter filter, Pageable pageable){
-        final Page<Client> all = clientRepository.findAll(filter.toSpecification(), pageable);
+    public ResponseEntity<List<ClientDTO>> findByContainClient(ClientFilter filter){
+        final List<Client> collect = clientRepository.findAll(filter.toSpecification());
 
-        final List<Client> content = all.getContent();
-        final List<ClientDTO> result = content.stream().map(clientMapper::toDto).collect(Collectors.toList());
-        return ResponseEntity.ok(new PageImpl<>(result, pageable, all.getTotalElements()));
+        final List<ClientDTO> result = collect.stream().map(clientMapper::toDto).collect(Collectors.toList());
+        return ResponseEntity.ok(result);
     }
 }

@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,13 +32,17 @@ public class CardService {
     private final ClientRepository clientRepository;
     private final CardMapper cardMapper;
 
+    @Transactional
     public ResponseEntity<CardDTO> createCard(CardDTO newCard){
         final ClientDTO clientDto = newCard.getClient();
         final Card card = cardMapper.toEntity(newCard);
 
-        final Optional<Client> clientById = clientRepository.findById(clientDto.getId());
+        final Long clientId = clientDto.getId();
+
+        final Optional<Client> clientById = clientRepository.findById(clientId);
         if (clientById.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            log.error(String.format("Client with id = [%s] not found", clientId));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         final Client client = clientById.get();
         client.setStatus(card.getTypeCard().name());
@@ -45,11 +50,11 @@ public class CardService {
         clientRepository.save(client);
         final Card save = cardRepository.save(card);
         final CardDTO result = cardMapper.toDto(save);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
 
     }
 
-    public ResponseEntity<Page<String>> typeCurrencyCardFilter(TypeCurrencyCardFilter filter, Pageable pageable) {
+    public ResponseEntity<Page<String>> findByTypeCurrencyCard(TypeCurrencyCardFilter filter, Pageable pageable) {
         final CurrencyType currency = filter.getCurrency();
         final CardType type = filter.getType();
         final List<Card> result = cardRepository.findByCurrencyAndTypeCard(currency,type);
