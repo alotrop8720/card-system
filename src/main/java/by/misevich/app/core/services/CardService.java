@@ -40,7 +40,7 @@ public class CardService {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         final Client client = clientById.get();
-        client.setStatus(card.getTypeCard());
+        client.setStatus(card.getTypeCard().name());
 
         clientRepository.save(client);
         final Card save = cardRepository.save(card);

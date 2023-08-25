@@ -20,9 +20,7 @@ public class Client extends AbstractEntity{
     private String name;
     private String phone;
     private String email;
-
-    @Enumerated(EnumType.STRING)
-    private CardType status = CardType.CLASSIC;
+    private String status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     @JsonBackReference
@@ -36,7 +34,7 @@ public class Client extends AbstractEntity{
         return Objects.equals(name, client.name) &&
                 Objects.equals(phone, client.phone) &&
                 Objects.equals(email, client.email) &&
-                status == client.status;
+                Objects.equals(status, client.status);
     }
 
     @Override
