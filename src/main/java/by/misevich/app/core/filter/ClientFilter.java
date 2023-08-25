@@ -15,7 +15,7 @@ import static by.misevich.app.core.filter.specification.ClientSpecification.*;
 public class ClientFilter extends ClientDTO implements Filter<Client> {
     @Override
     public Specification<Client> toSpecification() {
-        return Specification.where(hasName(getName()))
+        return Specification.where(hasFullName(getFullName()))
                 .and(hasPhone(getPhone()))
                 .and(hasEmail(getEmail()))
                 .and(hasStatus(getStatus()));

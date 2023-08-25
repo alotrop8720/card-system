@@ -1,6 +1,5 @@
 package by.misevich.common.model;
 
-import by.misevich.common.model.enums.CardType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
@@ -17,7 +16,7 @@ import java.util.Set;
 @ToString
 @Table(name = "m_client")
 public class Client extends AbstractEntity{
-    private String name;
+    private String fullName;
     private String phone;
     private String email;
     private String status;
@@ -31,7 +30,7 @@ public class Client extends AbstractEntity{
         if (this == o) return true;
         if (!(o instanceof Client)) return false;
         Client client = (Client) o;
-        return Objects.equals(name, client.name) &&
+        return Objects.equals(fullName, client.fullName) &&
                 Objects.equals(phone, client.phone) &&
                 Objects.equals(email, client.email) &&
                 Objects.equals(status, client.status);
@@ -39,6 +38,6 @@ public class Client extends AbstractEntity{
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, phone, email, status);
+        return Objects.hash(fullName, phone, email, status);
     }
 }

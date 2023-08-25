@@ -16,7 +16,6 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Collections;
 
-import static by.misevich.app.core.filter.specification.ClientSpecification.hasEmail;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

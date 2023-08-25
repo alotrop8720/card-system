@@ -8,8 +8,8 @@ import static by.misevich.app.core.filter.base.CommonSpecifications.start;
 
 @UtilityClass
 public class ClientSpecification {
-    public static Specification<Client> hasName(String name) {
-        return start("name", name);
+    public static Specification<Client> hasFullName(String fullName) {
+        return start("fullName", fullName);
     }
 
     public static Specification<Client> hasPhone(String phone) {

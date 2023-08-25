@@ -3,7 +3,7 @@ create table m_client
     id     bigserial not null
         constraint m_client_pk
             primary key,
-    name   varchar   not null,
+    full_name   varchar   not null,
     phone  varchar,
     email  varchar,
     status varchar

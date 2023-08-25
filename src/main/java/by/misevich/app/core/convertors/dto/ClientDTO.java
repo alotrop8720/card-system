@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "cards", callSuper = false)
 public class ClientDTO extends AbstractDTO{
-    private String name;
+    private String fullName;
     private String phone;
     private String email;
     private String status;
