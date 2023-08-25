@@ -1,7 +1,7 @@
 package by.misevich.app.core.controller;
 
 import by.misevich.app.core.convertors.dto.CardDTO;
-import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilter;
+import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilterDTO;
 import by.misevich.app.core.services.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ public class CardController {
     }
 
     @PostMapping("/search/by-type-currency")
-    public ResponseEntity<Page<String>> findByTypeCurrencyCard(@RequestBody TypeCurrencyCardFilter filter, Pageable pageable){
+    public ResponseEntity<Page<String>> findByTypeCurrencyCard(@RequestBody TypeCurrencyCardFilterDTO filter, Pageable pageable){
         return cardService.findByTypeCurrencyCard(filter, pageable);
     }
 }

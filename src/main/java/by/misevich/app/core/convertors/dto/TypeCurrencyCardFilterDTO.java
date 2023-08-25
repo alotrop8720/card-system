@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class TypeCurrencyCardFilter {
-    private CardType type;
+public class TypeCurrencyCardFilterDTO {
+    private CardType typeCard;
     private CurrencyType currency;
 }

@@ -2,7 +2,7 @@ package by.misevich.app.core.services;
 
 import by.misevich.app.core.convertors.dto.CardDTO;
 import by.misevich.app.core.convertors.dto.ClientDTO;
-import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilter;
+import by.misevich.app.core.convertors.dto.TypeCurrencyCardFilterDTO;
 import by.misevich.app.core.convertors.mappers.CardMapper;
 import by.misevich.common.model.Card;
 import by.misevich.common.model.Client;
@@ -55,9 +55,9 @@ public class CardService {
 
     }
 
-    public ResponseEntity<Page<String>> findByTypeCurrencyCard(TypeCurrencyCardFilter filter, Pageable pageable) {
+    public ResponseEntity<Page<String>> findByTypeCurrencyCard(TypeCurrencyCardFilterDTO filter, Pageable pageable) {
         final CurrencyType currency = filter.getCurrency();
-        final CardType type = filter.getType();
+        final CardType type = filter.getTypeCard();
         final List<Card> result;
         if (Objects.isNull(currency) && Objects.nonNull(type)){
             result = cardRepository.findByTypeCard(type);
@@ -66,6 +66,7 @@ public class CardService {
         } else if (Objects.nonNull(type)){
             result = cardRepository.findByCurrencyAndTypeCard(currency, type);
         } else {
+            log.error("Parameters currency and type are empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
