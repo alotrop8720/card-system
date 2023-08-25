@@ -23,10 +23,10 @@ public class ClientService {
     private final ClientMapper clientMapper;
 
     @Transactional
-    public ResponseEntity<ClientDTO> createClient(ClientDTO newClient){
+    public ResponseEntity<ClientDTO> createClient(ClientDTO newClient) {
         Client client = clientMapper.toEntity(newClient);
-        if (client == null){
-            log.info("Parser error");
+        if (client == null) {
+            log.info("Parser error: Client to ClientDTO");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         final Client save = clientRepository.save(client);
@@ -34,7 +34,7 @@ public class ClientService {
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
-    public ResponseEntity<List<ClientDTO>> findByContainClient(ClientFilter filter){
+    public ResponseEntity<List<ClientDTO>> findByContainClient(ClientFilter filter) {
         final List<Client> collect = clientRepository.findAll(filter.toSpecification());
 
         final List<ClientDTO> result = collect.stream().map(clientMapper::toDto).collect(Collectors.toList());

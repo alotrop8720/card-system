@@ -37,6 +37,10 @@ public class CardService {
     public ResponseEntity<CardDTO> createCard(CardDTO newCard){
         final ClientDTO clientDto = newCard.getClient();
         final Card card = cardMapper.toEntity(newCard);
+        if (Objects.isNull(card)){
+            log.info("Parser error: Card to CardDTO");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
 
         final Long clientId = clientDto.getId();
 
@@ -46,7 +50,7 @@ public class CardService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         final Client client = clientById.get();
-        client.setStatus(card.getTypeCard().name());
+        client.setStatus(newCard.getTypeCard().name());
 
         clientRepository.save(client);
         final Card save = cardRepository.save(card);
