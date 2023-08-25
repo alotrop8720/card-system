@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -57,7 +58,17 @@ public class CardService {
     public ResponseEntity<Page<String>> findByTypeCurrencyCard(TypeCurrencyCardFilter filter, Pageable pageable) {
         final CurrencyType currency = filter.getCurrency();
         final CardType type = filter.getType();
-        final List<Card> result = cardRepository.findByCurrencyAndTypeCard(currency,type);
+        final List<Card> result;
+        if (Objects.isNull(currency) && Objects.nonNull(type)){
+            result = cardRepository.findByTypeCard(type);
+        } else if (Objects.isNull(type) && Objects.nonNull(currency)){
+            result = cardRepository.findByCurrency(currency);
+        } else if (Objects.nonNull(type)){
+            result = cardRepository.findByCurrencyAndTypeCard(currency, type);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
         final List<String> listPhones = result.stream().map(Card::getClient).map(Client::getPhone).collect(Collectors.toList());
 
         return ResponseEntity.ok(new PageImpl<>(listPhones, pageable, listPhones.size()));

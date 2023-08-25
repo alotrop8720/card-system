@@ -10,7 +10,8 @@ import java.util.List;
 
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
-
-
     List<Card> findByCurrencyAndTypeCard(CurrencyType currency, CardType typeCard);
+    List<Card> findByCurrency(CurrencyType currency);
+    List<Card> findByTypeCard(CardType typeCard);
+
 }
